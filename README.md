@@ -12,6 +12,7 @@
 - As requisições via API serão feitas pelo Postman.
     Para clientes, basta colar o link 'http://api-pedidos.test/api/cliente' na barra de pesquisa e passar os parâmetros:
       ID_CLIENTE, NOME, CIDADE, ESTADO, TELEFONE
+    
     Para pedidos, basta colar o link 'http://api-pedidos.test/api/pedidos' na barra de pesquisa e passar os parâmetros: 
       ID_CLIENTE, VALOR_PEDIDO, VALOR_FRETE, DATA_ENTREGA
     
