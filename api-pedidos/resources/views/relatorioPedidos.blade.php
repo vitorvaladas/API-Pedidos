@@ -53,7 +53,7 @@ $pedidos_clientes = DB::select(
                 <td> {{ $pc->ESTADO }} </td>
                 <td> {{ number_format($pc->VALOR_PEDIDO,2,",",".")}} </td>
                 <td> {{ number_format($pc->VALOR_FRETE,2,",",".") }} </td>
-                <td> {{ date('d/m/Y', strtotime($pc->DATA_ENTREGA)) }} </td>
+                <td> {{ $pc->DATA_ENTREGA }} </td>
             </tr>
         @endforeach
     </tbody>
