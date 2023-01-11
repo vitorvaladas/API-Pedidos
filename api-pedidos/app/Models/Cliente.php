@@ -22,49 +22,30 @@ class Cliente extends Model
 
         // Verifica se existe tabela 'clientes' no banco de dados, se não houver, cria
 
-        $tabelaClientes = DB::select(
-            "SELECT EXISTS (
-                SELECT 
-                    *
-                FROM 
-                information_schema.TABLES 
-                WHERE 
-                TABLE_NAME = 'clientes'
-                );");
-        if($tabelaClientes == 0){
-            $tabelaClientes = DB::select("CREATE TABLE IF NOT EXISTS `clientes` (
-                `ID_CLIENTE` int NOT NULL,
-                `NOME` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-                `CIDADE` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-                `ESTADO` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-                `TELEFONE` int NOT NULL,
-                `created_at` timestamp NULL DEFAULT NULL,
-                `updated_at` timestamp NULL DEFAULT NULL,
-                PRIMARY KEY (`ID_CLIENTE`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
-        }
-
-        // Verifica se existe tabela 'pedidos' no banco de dados, se não houver, cria
-
-        $tabelaPedidos = DB::select("SELECT EXISTS (
-            SELECT 
-                *
-            FROM 
-            information_schema.TABLES 
-            WHERE 
-            TABLE_NAME = 'pedidos'
-            );");
-        if($tabelaPedidos == 0){
-            $tabelaPedidos = DB::select("CREATE TABLE IF NOT EXISTS `pedidos` (
+        $tabelaClientes = DB::select("CREATE TABLE IF NOT EXISTS `clientes` (
             `ID_CLIENTE` int NOT NULL,
-            `VALOR_PEDIDO` double(8,2) NOT NULL,
-            `VALOR_FRETE` double(8,2) NOT NULL,
-            `DATA_ENTREGA` date NOT NULL,
+            `NOME` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+            `CIDADE` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+            `ESTADO` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+            `TELEFONE` int NOT NULL,
             `created_at` timestamp NULL DEFAULT NULL,
             `updated_at` timestamp NULL DEFAULT NULL,
             PRIMARY KEY (`ID_CLIENTE`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
-        }
+        
+
+        // Verifica se existe tabela 'pedidos' no banco de dados, se não houver, cria
+
+        $tabelaPedidos = DB::select("CREATE TABLE IF NOT EXISTS `pedidos` (
+        `ID_CLIENTE` int NOT NULL,
+        `VALOR_PEDIDO` double(8,2) NOT NULL,
+        `VALOR_FRETE` double(8,2) NOT NULL,
+        `DATA_ENTREGA` date NOT NULL,
+        `created_at` timestamp NULL DEFAULT NULL,
+        `updated_at` timestamp NULL DEFAULT NULL,
+        PRIMARY KEY (`ID_CLIENTE`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
+    
         if($tabelaClientes == true && $tabelaPedidos == true){
             return true;
         }
