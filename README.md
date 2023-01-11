@@ -13,7 +13,7 @@
 
 - Assim que instalados, basta colar a pasta 'api-pedidos' deste projeto para a pasta '\laragon\www\'.
 
-- O link para acessar o projeto localmente é ' 
+- O link para acessar o projeto localmente é 'http://api-pedidos.test/' 
 
 - As requisições via API serão feitas pelo Postman.
   - Para clientes, basta colar o link 'http://api-pedidos.test/api/cliente' na barra de pesquisa e passar os parâmetros: 
